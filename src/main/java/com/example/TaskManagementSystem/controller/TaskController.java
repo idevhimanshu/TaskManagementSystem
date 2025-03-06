@@ -18,6 +18,8 @@ import com.example.TaskManagementSystem.dto.TaskDTO;
 import com.example.TaskManagementSystem.entity.Task;
 import com.example.TaskManagementSystem.service.TaskService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/tasks")
 public class TaskController {
@@ -26,7 +28,7 @@ public class TaskController {
 	private TaskService taskService;
 	
 	@PostMapping
-    public ResponseEntity<Task> createTask(@RequestBody TaskDTO taskDTO) {
+    public ResponseEntity<?> createTask(@RequestBody @Valid TaskDTO taskDTO) {
         Task createdTask = taskService.createTask(taskDTO);
         return new ResponseEntity<>(createdTask, HttpStatus.CREATED);
     }

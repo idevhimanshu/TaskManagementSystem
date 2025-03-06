@@ -17,9 +17,9 @@ public class TaskService {
 	
 	public Task createTask(TaskDTO taskDTO) {
 		Task task = new Task();
-		task.setTitle(taskDTO.getTitle());
+		task.setTitle(taskDTO.getTile());
 		task.setDescription(taskDTO.getDescription());
-		task.setDueData(taskDTO.getDueDate());
+		task.setDueData(taskDTO.getDueData());
 		return taskRepository.save(task);
 	}
 	
@@ -30,15 +30,15 @@ public class TaskService {
 	public Task updateTask(Long taskId, TaskDTO taskDTO) {
 		Task task = taskRepository.findById(taskId)
                 .orElseThrow(() -> new RuntimeException("Task not found"));
-		if (taskDTO.getTitle() != null) {
-		task.setTitle(taskDTO.getTitle());
+		if (taskDTO.getTile() != null) {
+		task.setTitle(taskDTO.getTile());
 		}
 		if (taskDTO.getDescription() != null) {
 		task.setDescription(taskDTO.getDescription());
 		}
 		
-		if (taskDTO.getDueDate() != null) {
-		task.setDueData(taskDTO.getDueDate());
+		if (taskDTO.getDueData() != null) {
+		task.setDueData(taskDTO.getDueData());
 		}
 		return taskRepository.save(task);
 	}
